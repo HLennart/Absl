@@ -229,19 +229,19 @@ class ABSL_DLL  time_zone {
 // Loads the named time zone. May perform I/O on the initial load.
 // If the name is invalid, or some other kind of error occurs, returns
 // false and "*tz" is set to the UTC time zone.
-bool load_time_zone(const std::string& name, time_zone* tz);
+bool ABSL_DLL load_time_zone(const std::string& name, time_zone* tz);
 
 // Returns a time_zone representing UTC. Cannot fail.
-time_zone utc_time_zone();
+time_zone ABSL_DLL utc_time_zone();
 
 // Returns a time zone that is a fixed offset (seconds east) from UTC.
 // Note: If the absolute value of the offset is greater than 24 hours
 // you'll get UTC (i.e., zero offset) instead.
-time_zone fixed_time_zone(const seconds& offset);
+time_zone ABSL_DLL fixed_time_zone(const seconds& offset);
 
 // Returns a time zone representing the local time zone. Falls back to UTC.
 // Note: local_time_zone.name() may only be something like "localtime".
-time_zone local_time_zone();
+time_zone ABSL_DLL local_time_zone();
 
 // Returns the civil time (cctz::civil_second) within the given time zone at
 // the given absolute time (time_point). Since the additional fields provided
@@ -266,9 +266,9 @@ inline time_point<seconds> convert(const civil_second& cs,
 
 namespace detail {
 using femtoseconds = std::chrono::duration<std::int_fast64_t, std::femto>;
-std::string format(const std::string&, const time_point<seconds>&,
+std::string ABSL_DLL format(const std::string&, const time_point<seconds>&,
                    const femtoseconds&, const time_zone&);
-bool parse(const std::string&, const std::string&, const time_zone&,
+bool ABSL_DLL parse(const std::string&, const std::string&, const time_zone&,
            time_point<seconds>*, femtoseconds*, std::string* err = nullptr);
 template <typename Rep, std::intmax_t Denom>
 bool join_seconds(

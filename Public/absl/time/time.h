@@ -676,7 +676,7 @@ ABSL_ATTRIBUTE_CONST_FUNCTION std::chrono::hours ToChronoHours(Duration d);
 //
 // Returns a string representing the duration in the form "72h3m0.5s".
 // Returns "inf" or "-inf" for +/- `InfiniteDuration()`.
-ABSL_ATTRIBUTE_CONST_FUNCTION std::string FormatDuration(Duration d);
+ABSL_ATTRIBUTE_CONST_FUNCTION std::string ABSL_DLL FormatDuration(Duration d);
 
 // Output stream operator.
 inline std::ostream& operator<<(std::ostream& os, Duration d) {
@@ -1462,14 +1462,14 @@ ABSL_DLL extern const char RFC1123_no_wday[];  // %d %b %E4Y %H:%M:%S %z
 // `absl::InfinitePast()`, the returned string will be exactly "infinite-past".
 // In both cases the given format string and `absl::TimeZone` are ignored.
 //
-ABSL_ATTRIBUTE_PURE_FUNCTION std::string FormatTime(absl::string_view format,
+ABSL_ATTRIBUTE_PURE_FUNCTION std::string ABSL_DLL FormatTime(absl::string_view format,
                                                     Time t, TimeZone tz);
 
 // Convenience functions that format the given time using the RFC3339_full
 // format.  The first overload uses the provided TimeZone, while the second
 // uses LocalTimeZone().
-ABSL_ATTRIBUTE_PURE_FUNCTION std::string FormatTime(Time t, TimeZone tz);
-ABSL_ATTRIBUTE_PURE_FUNCTION std::string FormatTime(Time t);
+ABSL_ATTRIBUTE_PURE_FUNCTION std::string ABSL_DLL FormatTime(Time t, TimeZone tz);
+ABSL_ATTRIBUTE_PURE_FUNCTION std::string ABSL_DLL FormatTime(Time t);
 
 // Output stream operator.
 inline std::ostream& operator<<(std::ostream& os, Time t) {
